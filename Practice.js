@@ -1,51 +1,22 @@
-// Create the object and assign it to a variable
-let user = { name: "Isaac", age: 23};
- 
-// Access the properties of the object
-console.log(user.name);
-console.log(user.age); 
- 
-user.name = "Amasis";
-user.age = 120;
- 
-// Now, if we access the properties again, we'll see the updated values
-console.log(user.name);
-console.log(user.age);
+// Var
+let name = "Isaac";
+const age = 22;
 
-// Create a new object and assign it to a variable
-let user = {
-    name: "Isaac",
-    age: 22,
-    address: {
-        street: "123 Main St",
-        city: "Calgary",
-        coordinates: {
-            lat: 42.0,
-            long: -69,
-        },
-    },
-};
+function greet(userName) {
+    return "Hello, " + userName + "!";
+}
 
-// Access the properties of the object 
-console.log(user.name);
-console.log(user.address.city);
-console.log(user.address.coordinates.lat);
+/*
+Interacting with the DOM(Document Object Model)
+The DOM represents the structure of a HTML document as a tree of objects. Each object corresponds to a part of the,
+document, such as an element or an attribute.
+*/
+let heading = document.querySelector("hi");
+heading.textContent = "New Heading";
 
-// Modify the properties of the object
-user.name = "Amasis";
-user.address.city = "Edmonton";
-user.address.coordinates.lat = 69;
-
-
-const person = {
-    name: "Isaac",
-    age: 22,
-    city: "Calgary", 
-};
-
-// Using Destructuring
-const { name, age, city} = person;
-
-
-
+// Event Listeners 
+let button = document.querySelector("button");
+button.addEventListener("click", function() {
+    alert("Button clicked!");
+});
 
