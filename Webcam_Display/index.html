@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Webcam Stream</title>
+        <style>
+            button {
+                margin: 5px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Webcam Stream Example</h1>
+        <video id="webcam" autoplay playsinline></video>
+        <!--Buttons location-->
+
+        <button id="capture-btn">Capture Image</button>
+        <button id="normal-btn">Normal</button>
+        <button id="grayscale-btn">Grayscale</button>
+        <button id="sepia-btn">Sepia</button>
+
+        <canvas id="canvas" style="display: none;"></canvas>
+        <a id="download-link" style="display: none;">Download Image</a>
+        <script src="script.js"></script>
+    </body>
+</html>
