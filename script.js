@@ -1,17 +1,11 @@
-let counter = document.getElementById("counter");
-let increaseBtn = document.getElementById("increase");
-let decreaseBtn = document.getElementById("decrease");
-let resetBtn = document.getElementById("reset");
+// Writing a script to define routes and handle requests.
+const express = require('express');
+const app = express();
 
-increaseBtn.addEventListener("click", function() {
-    counter.textContent = parseInt(counter.textContent) + 1;
+app.get('/api/items', (req, res) => {
+    res.json([{ name: 'Item 1' }, { name: 'Item 2' }]);
 });
 
-decreaseBtn.addEventListener("click", function() {
-    counter.textContent = parseInt(counter.textContent) - 1;
-});
-
-resetBtn.addEventListener("click", function() {
-    counter.textContent = 0;
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Server running on port ${PORT}'));
 

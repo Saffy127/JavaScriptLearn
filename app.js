@@ -1,17 +1,34 @@
-// Updated file to handle app incoming and outgoing messages
+// Writing a script to define routes and handle requests.
+const express = require('express');
+const app = express();
 
-const chatLog = document.getElementById('chatLog');
-const messageInput = document.getElementById('messageInput');
-const sendButton = document.getElementById('sendButton');
-const ws = new WebSocket('ws://localhost: 3000');
+app.use(express.json()); // Middleware to parse JSON bodies
 
-ws.onmessage = (event) => {
-    chatLog.innerHTML += '<div>${event.data}</div>';
-};
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-sendButton.addEventListener('click', () => {
-    const message = messageInput.value;
-    chatLog.innerHTML += '<div>${message}</div>';
-    messageInput.value = '';
+//Simulating a simple database using an array
+let items = [{ id: 1, name: 'Item 1'}, { id: 2, name: 'Item 2' }];
+
+app.get('/api/items', (req, res) => {
+    res.json(items);
 });
 
+// Creating a (POST) Item
+app.post('/api/items', (req,res) => {
+    const newItem = {
+        id: items.length + 1,
+        name: req.body.name
+    };
+    items.push(newItem);
+    res.json(newItem);
+});
+
+// Update (PUT) Item, updating an existing item
+app.put('/api/items/:id', (req, res) => {
+    let item = items.find(i => i.id === parseInt(req.params.id));
+    if (!item) return res.status(404).send('Item not found.');
+
+    item.name = req.body.name;
+    res.json(items);
+});
